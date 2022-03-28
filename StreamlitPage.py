@@ -15,9 +15,8 @@ def InitStreamLitPage():
     st.title("Multi-context question answering chatbot")
     st.write("---")
 
-def UserInput():
-    return st.text_input("Please enter your question : ")
+def UserInput(Text):
+    return st.text_input(Text)
 
-def AnswerUser(Text):
-    FullString = f'The answer is : "{Text}"'
-    st.write(FullString)
+def DisplayText(Text):
+    st.write(Text)

@@ -26,12 +26,11 @@ So, here, we have just a QuestionAnswering function
 import StreamlitPage as app
 import FrontToBack
 
+Revision = 'v1.0'
 app.InitStreamLitPage()
-Question = app.UserInput()
+app.DisplayText(f'code revision : {Revision}')
+Question = app.UserInput("Please enter your question : ")
 Answer = FrontToBack.QuestionAnswering(Question)
-app.AnswerUser(Answer)
-app.AnswerUser("---------")
-Test = FrontToBack.TestRequest(Question)
-app.AnswerUser(Test)
+app.DisplayText(f'Answer : {Answer}')
 
 
