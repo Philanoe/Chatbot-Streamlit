@@ -11,12 +11,18 @@ import requests
 API_url = 'http://127.0.0.1:8080/'
 
 def TestRequest(Question):
-    
+
     Option_url = ''
-    Full_url = API_url + Option_url
-    BackToFrond_Data = requests.get(Full_url)
-    Answer = f'url : {BackToFrond_Data.url}, answer : {BackToFrond_Data.text}'
-    #Answer = BackToFrond_Data.json()['message']
+    Full_url = API_url + Option_url    
+    
+    try:
+        BackToFrond_Data = requests.get(Full_url)
+        Answer = f'url : {Full_url}, answer : {BackToFrond_Data.text}'
+        pass
+    except Exception:
+        Answer = f'url : {Full_url}, answer : {BackToFrond_Data.text}'
+        Answer = f'url : {Full_url},  API connexion error'
+        pass
         
     return Answer
 
@@ -25,8 +31,14 @@ def QuestionAnswering(Question):
     Option_url = 'question/'
     Data_url = Question
     Full_url = API_url + Option_url + Data_url
-    BackToFrond_Data = requests.get(Full_url)
-    Answer = f'url : {BackToFrond_Data.url}, answer : {BackToFrond_Data.text}'
-    #Answer = BackToFrond_Data.json()['answer']
+    
+    try:
+        BackToFrond_Data = requests.get(Full_url)
+        Answer = f'url : {BackToFrond_Data.url}, answer : {BackToFrond_Data.text}'
+        #Answer = BackToFrond_Data.json()['answer']
+        pass
+    except Exception:
+        Answer = f'url : {Full_url},  API connexion error'
+        pass        
         
     return Answer
