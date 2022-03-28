@@ -20,7 +20,6 @@ def TestRequest(Question):
         Answer = f'url : {Full_url}, answer : {BackToFrond_Data.text}'
         pass
     except Exception:
-        Answer = f'url : {Full_url}, answer : {BackToFrond_Data.text}'
         Answer = f'url : {Full_url},  API connexion error'
         pass
         
