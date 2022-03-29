@@ -19,10 +19,8 @@ def QuestionAnswering(Question):
     try:
         BackToFrond_Data = requests.get(Full_url)
         Answer = BackToFrond_Data.json()["answer"]
-        #Answer = BackToFrond_Data.json()['answer']
         pass
     except Exception:
-        Answer = f'url : {Full_url},  API connexion error'
-        pass        
+        Answer = 'API connexion error'
         
     return Answer
