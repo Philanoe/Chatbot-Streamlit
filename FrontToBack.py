@@ -18,7 +18,7 @@ def QuestionAnswering(Question):
     
     try:
         BackToFrond_Data = requests.get(Full_url)
-        Answer = f'url : {BackToFrond_Data.url}, answer : {BackToFrond_Data.text}'
+        Answer = BackToFrond_Data.json()["answer"]
         #Answer = BackToFrond_Data.json()['answer']
         pass
     except Exception:
