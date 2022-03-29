@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar 21 22:01:26 2022
+Created on Tue Mar 29 15:45:01 2022
 
-@author: Philanoe
+@author: jingpan
 -- FRONT --
 Main module of the front end of a 
 multi-context question answering chatbot
@@ -25,12 +26,30 @@ So, here, we have just a QuestionAnswering function
 
 import StreamlitPage as app
 import FrontToBack
+import streamlit as st
+from streamlit_lottie import st_lottie
 
-Revision = 'v1.0'
 app.InitStreamLitPage()
-app.DisplayText(f'code revision : {Revision}')
-Question = app.UserInput("Please enter your question : ")
-Answer = FrontToBack.QuestionAnswering(Question)
-app.DisplayText(f'Answer : {Answer}')
 
+extra_column, text_column, image_column = st.columns((1,3,2.5))
 
+lottie_hello = app.load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_jh9gfdye.json")
+
+with text_column:
+    app.Introduction()
+    Question = app.UserInput()
+    Answer = FrontToBack.QuestionAnswering(Question)
+    app.AnswerUser(Answer)
+
+with image_column:
+    st_lottie(
+        lottie_hello,
+        speed=1,
+        reverse=False,
+        loop=True,
+        quality="low", # medium ; high
+        # canvas
+        height=600,
+        width=400,
+        key=None,
+    )

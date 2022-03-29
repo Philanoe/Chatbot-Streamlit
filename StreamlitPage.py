@@ -8,15 +8,32 @@ Streamlit Functions for the Multi-context question answering chatbot
 """
 
 import streamlit as st
+from requests import get
 
-def InitStreamLitPage():
-    st.set_page_config(page_title="ChatBot", page_icon="🍂")
-    #st.image("")
-    st.title("Multi-context question answering chatbot")
-    st.write("---")
-
-def UserInput(Text):
-    return st.text_input(Text)
 
 def DisplayText(Text):
     st.write(Text)
+
+def load_lottieurl(url):
+    r = get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+def InitStreamLitPage():
+    st.set_page_config(page_title="ChatBot", page_icon="🍂",layout="wide")
+    
+def Introduction():
+    st.subheader("Hi, I am a Chatbot :robot_face: :speech_balloon: :wave:")
+
+    st.write("I am passionate about anwering your questions.")
+
+def UserInput():
+    st.text(" ")
+    return st.text_input("Please enter your question : ")
+
+def AnswerUser(Text):
+    FullString = f'The answer is : "{Text}"'
+    st.write(FullString)
+
+
